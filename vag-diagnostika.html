@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="cs" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAG Diagnostika - Profesionální diagnostika VW, Škoda, Audi, Seat</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .glass {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            transform: translateY(-4px);
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(15, 23, 42, 0.85) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%230f172a" width="1200" height="600"/><path d="M0 300 Q300 200 600 300 T1200 300 L1200 600 L0 600 Z" fill="%23000000" opacity="0.5"/></svg>');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .gradient-border {
+            border: 2px solid transparent;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.8)) padding-box,
+                        linear-gradient(135deg, #3b82f6, #1e40af) border-box;
+            backdrop-filter: blur(12px);
+        }
+        .brand-logo {
+            filter: grayscale(100%);
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+        .brand-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-black to-slate-900 text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <h1 class="text-2xl font-bold text-white tracking-tight">
+                        VAG <span class="text-blue-500">DIAGNOSTIKA</span>
+                    </h1>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#sluzby" class="text-gray-300 hover:text-white transition-colors duration-200">Služby</a>
+                    <a href="#vozy" class="text-gray-300 hover:text-white transition-colors duration-200">Podporované vozy</a>
+                    <a href="#kontakt" class="text-gray-300 hover:text-white transition-colors duration-200">Kontakt</a>
+                    <a href="tel:+420123456789" class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-red-600/50">
+                        <i class="fas fa-phone mr-2"></i>Zavolat
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button class="text-gray-300 hover:text-white">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center justify-center relative pt-20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                    Profesionální Diagnostika<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">& Kódování</span>
+                </h1>
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl text-gray-300 font-semibold mb-12">
+                    <span class="text-blue-400">VW</span> • 
+                    <span class="text-green-400">Škoda</span> • 
+                    <span class="text-red-400">Audi</span> • 
+                    <span class="text-orange-400">Seat</span>
+                </h2>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#sluzby" class="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all duration-200 shadow-2xl hover:shadow-red-600/50 hover:scale-105 w-full sm:w-auto">
+                        <i class="fas fa-exclamation-triangle mr-2"></i>Oprava SOS Chyby
+                    </a>
+                    <a href="#sluzby" class="border-2 border-blue-500 hover:bg-blue-500/10 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all duration-200 w-full sm:w-auto">
+                        <i class="fas fa-list-check mr-2"></i>Moje Služby
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-3xl text-gray-400"></i>
+        </div>
+    </section>
+
+    <!-- Brands Strip -->
+    <section class="py-16 bg-black/50 border-y border-gray-800">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-gray-400 text-lg mb-8">Specializace na vozy:</p>
+            <div class="flex flex-wrap items-center justify-center gap-12 sm:gap-16">
+                <div class="brand-logo text-center">
+                    <i class="fab fa-vw text-6xl"></i>
+                    <p class="text-sm mt-2 text-gray-400">Volkswagen</p>
+                </div>
+                <div class="brand-logo text-center">
+                    <svg class="w-16 h-16 mx-auto" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                    </svg>
+                    <p class="text-sm mt-2 text-gray-400">Škoda</p>
+                </div>
+                <div class="brand-logo text-center">
+                    <div class="w-16 h-16 mx-auto flex items-center justify-center">
+                        <div class="relative">
+                            <div class="absolute inset-0 border-4 border-current rounded-full"></div>
+                            <div class="w-16 h-16 flex items-center justify-center text-xl font-bold">A</div>
+                        </div>
+                    </div>
+                    <p class="text-sm mt-2 text-gray-400">Audi</p>
+                </div>
+                <div class="brand-logo text-center">
+                    <i class="fas fa-car text-6xl"></i>
+                    <p class="text-sm mt-2 text-gray-400">Seat</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section id="sluzby" class="py-20 bg-gradient-to-b from-slate-900 to-black">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl sm:text-5xl font-bold mb-4">Naše Služby</h2>
+                <p class="text-xl text-gray-400">Profesionální diagnostika s originálním VCDS hardware</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-card rounded-2xl p-8">
+                    <div class="w-16 h-16 bg-red-600/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-triangle-exclamation text-3xl text-red-500"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Oprava SOS / eCall</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Reset a oprava jednotky po výměně baterie. Specializace pro Octavia 4, Golf 8, T6.1 a další moderní vozy skupiny VAG.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card rounded-2xl p-8">
+                    <div class="w-16 h-16 bg-blue-600/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-gears text-3xl text-blue-500"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Kódování & Komfort</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Start/Stop automatické vypnutí, Pásy bez pípání, Protočení ručiček, Ambientní osvětlení, Coming/Leaving Home a další.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card rounded-2xl p-8">
+                    <div class="w-16 h-16 bg-green-600/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-car-battery text-3xl text-green-500"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Servisní Diagnostika</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Baterie (BEM), Brzdy (EPB), DPF Regenerace, Servisní intervaly, Kontrola všech jednotek a další diagnostické služby.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supported Models Section with Tabs -->
+    <section id="vozy" class="py-20 bg-black" x-data="{ activeTab: 'tab1' }">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl sm:text-5xl font-bold mb-4">Co umím na vašem autě?</h2>
+                    <p class="text-xl text-gray-400">Vyberte si model a zjistěte možnosti</p>
+                </div>
+
+                <div class="gradient-border rounded-2xl p-8">
+                    <!-- Tabs -->
+                    <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                        <button @click="activeTab = 'tab1'" 
+                                :class="activeTab === 'tab1' ? 'bg-blue-600 text-white' : 'bg-slate-800/50 text-gray-300 hover:bg-slate-700/50'"
+                                class="flex-1 px-6 py-4 rounded-lg font-semibold transition-all duration-200">
+                            <i class="fas fa-car mr-2"></i>Octavia III / Superb III
+                        </button>
+                        <button @click="activeTab = 'tab2'" 
+                                :class="activeTab === 'tab2' ? 'bg-blue-600 text-white' : 'bg-slate-800/50 text-gray-300 hover:bg-slate-700/50'"
+                                class="flex-1 px-6 py-4 rounded-lg font-semibold transition-all duration-200">
+                            <i class="fas fa-car mr-2"></i>Octavia IV / Golf 8
+                        </button>
+                        <button @click="activeTab = 'tab3'" 
+                                :class="activeTab === 'tab3' ? 'bg-blue-600 text-white' : 'bg-slate-800/50 text-gray-300 hover:bg-slate-700/50'"
+                                class="flex-1 px-6 py-4 rounded-lg font-semibold transition-all duration-200">
+                            <i class="fas fa-cars mr-2"></i>Ostatní
+                        </button>
+                    </div>
+
+                    <!-- Tab Content -->
+                    <div class="bg-slate-900/50 rounded-xl p-6">
+                        <!-- Tab 1 Content -->
+                        <div x-show="activeTab === 'tab1'" x-transition class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <i class="fas fa-check-circle text-green-500 text-xl mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-lg">Vypnutí Start/Stop</h4>
+                                    <p class="text-gray-400">Trvalé vypnutí systému Start/Stop po nastartování</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i class="fas fa-check-circle text-green-500 text-xl mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-lg">Needle Sweep</h4>
+                                    <p class="text-gray-400">Protočení ručiček při nastartování</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i class="fas fa-check-circle text-green-500 text-xl mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-lg">Corner mlhovky</h4>
+                                    <p class="text-gray-400">Aktivace rohových světel při zatáčení</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i class="fas fa-check-circle text-green-500 text-xl mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-lg">Sklápění zrcátek</h4>
+                                    <p class="text-gray-400">Automatické sklopení zrcátek při zamknutí</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i class="fas fa-check-circle text-green-500 text-xl mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-lg">Coming/Leaving Home</h4>
+                                    <p class="text-gray-400">Světla pro osvětlení cesty k/od vozu</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 2 Content -->
+                        <div x-show="activeTab === 'tab2'" x-transition class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <i class="fas fa-check-circle text-red-500 text-xl mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-lg">Oprava SOS Chyby</h4>
+                                    <p class="text-gray-400">Reset a aktivace eCall jednotky po výměně 12V baterie</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i class="fas fa-check-circle text-red-500 text-xl mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-lg">Ambientní barvy (30+)</h4>
+                                    <p class="text-gray-400">Rozšíření palety ambientního osvětlení</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i class="fas fa-check-circle text-red-500 text-xl mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-lg">Lane Assist paměť</h4>
+                                    <p class="text-gray-400">Uložení nastavení Lane Assist po restartu</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i class="fas fa-check-circle text-red-500 text-xl mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-lg">Digital Cockpit úpravy</h4>
+                                    <p class="text-gray-400">Personalizace digitálního přístrojového štítu</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 3 Content -->
+                        <div x-show="activeTab === 'tab3'" x-transition class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <i class="fas fa-check-circle text-blue-500 text-xl mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-lg">T6/T6.1 Multivan</h4>
+                                    <p class="text-gray-400">Kompletní diagnostika a kódování včetně SOS opravy</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i class="fas fa-check-circle text-blue-500 text-xl mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-lg">Audi A4/A6 (8W/C8)</h4>
+                                    <p class="text-gray-400">Full diagnostika, Matrix LED, Virtual Cockpit</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i class="fas fa-check-circle text-blue-500 text-xl mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-lg">Seat Leon 4</h4>
+                                    <p class="text-gray-400">Všechny funkce jako Golf 8 / Octavia IV</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i class="fas fa-info-circle text-yellow-500 text-xl mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-lg">Máte jiný model?</h4>
+                                    <p class="text-gray-400">Kontaktujte mě, většinu VAG vozů zvládnu</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="kontakt" class="bg-black border-t border-gray-800 py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Column 1: Brand & About -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">
+                        VAG <span class="text-blue-500">DIAGNOSTIKA</span>
+                    </h3>
+                    <p class="text-gray-400 leading-relaxed mb-4">
+                        Profesionální diagnostika a kódování vozů skupiny VAG pomocí originálního VCDS hardware od Ross-Tech.
+                    </p>
+                    <div class="flex items-center space-x-2 text-green-500">
+                        <i class="fas fa-check-circle"></i>
+                        <span class="font-semibold">Originální VCDS HEX-V2</span>
+                    </div>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Rychlé odkazy</h4>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="#sluzby" class="text-gray-400 hover:text-white transition-colors duration-200 flex items-center">
+                                <i class="fas fa-angle-right mr-2"></i>Služby
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#vozy" class="text-gray-400 hover:text-white transition-colors duration-200 flex items-center">
+                                <i class="fas fa-angle-right mr-2"></i>Podporované vozy
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#sluzby" class="text-gray-400 hover:text-white transition-colors duration-200 flex items-center">
+                                <i class="fas fa-angle-right mr-2"></i>Oprava SOS / eCall
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#sluzby" class="text-gray-400 hover:text-white transition-colors duration-200 flex items-center">
+                                <i class="fas fa-angle-right mr-2"></i>Kódování
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Kontakt</h4>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-gray-400 text-sm mb-2">Telefon</p>
+                            <a href="tel:+420123456789" class="text-3xl font-bold text-red-500 hover:text-red-400 transition-colors duration-200">
+                                +420 123 456 789
+                            </a>
+                        </div>
+                        <div>
+                            <p class="text-gray-400 text-sm mb-1">Email</p>
+                            <a href="mailto:info@vag-diagnostika.cz" class="text-blue-400 hover:text-blue-300 transition-colors duration-200">
+                                <i class="fas fa-envelope mr-2"></i>info@vag-diagnostika.cz
+                            </a>
+                        </div>
+                        <div>
+                            <p class="text-gray-400 text-sm mb-1">Lokalita</p>
+                            <p class="text-white flex items-start">
+                                <i class="fas fa-location-dot mr-2 mt-1"></i>
+                                <span>Budišov nad Budišovkou</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+                <p>&copy; 2026 VAG Diagnostika. Profesionální diagnostika vozů VW, Škoda, Audi, Seat.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

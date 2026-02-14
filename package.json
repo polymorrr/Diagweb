@@ -1,0 +1,21 @@
+{
+  "name": "vh-diagnostika",
+  "version": "1.0.0",
+  "description": "VH Diagnostika & Kódování - Profesionální diagnostika vozů VW, Škoda, Audi, Seat",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static site - no build needed'"
+  },
+  "keywords": [
+    "vcds",
+    "diagnostika",
+    "vag",
+    "volkswagen",
+    "skoda",
+    "audi",
+    "seat"
+  ],
+  "author": "VH Diagnostika",
+  "license": "MIT"
+}
