@@ -666,19 +666,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .brand-logo-card {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    justify-content: center;
+    gap: 2rem;
     padding: 3rem 2rem;
     background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
     border: 2px solid var(--glass-border);
-    border-radius: 24px;
+    border-radius: 28px;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
-    backdrop-filter: blur(var(--glass-blur));
-    position: relative;
     overflow: hidden;
+    perspective: 1000px;
+    transform-style: preserve-3d;
 }
 
 .brand-logo-card::before {
@@ -777,11 +780,49 @@ iconify-icon.brand-logo.audi-rings {
 }
 
 .brand-logo-card:hover {
-    transform: translateY(-10px) scale(1.05);
+    transform: translateY(-15px) scale(1.08) rotateY(10deg);
+    animation: brandFloat 2s ease-in-out infinite;
+}
+
+.brand-logo-card:hover .brand-logo,
+.brand-logo-card:hover iconify-icon.brand-logo {
+    animation: brandSpin 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+               brandPulse 2s ease-in-out infinite;
 }
 
 .brand-logo-card:hover span {
     opacity: 1;
+    transform: translateY(-5px);
+}
+
+@keyframes brandFloat {
+    0%, 100% {
+        transform: translateY(-15px) scale(1.08) rotateY(10deg);
+    }
+    50% {
+        transform: translateY(-20px) scale(1.08) rotateY(-10deg);
+    }
+}
+
+@keyframes brandSpin {
+    0% {
+        transform: rotateY(0deg) scale(1);
+    }
+    50% {
+        transform: rotateY(180deg) scale(1.2);
+    }
+    100% {
+        transform: rotateY(360deg) scale(1.15);
+    }
+}
+
+@keyframes brandPulse {
+    0%, 100% {
+        filter: drop-shadow(0 10px 40px currentColor);
+    }
+    50% {
+        filter: drop-shadow(0 15px 60px currentColor) brightness(1.3);
+    }
 }
 
 /* ============================================
