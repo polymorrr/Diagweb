@@ -698,18 +698,22 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0.2;
 }
 
-.brand-logo {
+.brand-logo,
+iconify-icon.brand-logo {
     width: 6rem;
     height: 6rem;
+    font-size: 6rem;
     color: var(--cloud-dancer);
     opacity: 0.6;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     filter: drop-shadow(0 0 20px currentColor);
 }
 
-.brand-logo.audi-rings {
+.brand-logo.audi-rings,
+iconify-icon.brand-logo.audi-rings {
     width: 8rem;
     height: 4rem;
+    font-size: 4rem;
 }
 
 .brand-logo-card span {
