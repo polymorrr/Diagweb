@@ -9,6 +9,40 @@ document.addEventListener('DOMContentLoaded', function() {
     gsap.registerPlugin(ScrollTrigger);
     
     /* ==========================================
+       MOBILE MENU TOGGLE
+       ========================================== */
+    
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const navLinks = document.getElementById('navLinks');
+    
+    if (mobileMenuToggle && navLinks) {
+        mobileMenuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        // Close menu when clicking on a link
+        const menuLinks = navLinks.querySelectorAll('.nav-link');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!mobileMenuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+    
+    /* ==========================================
        NAVBAR - Smart Hide/Show with Glassmorphism
        ========================================== */
     
@@ -652,32 +686,6 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('%cŽádný čínský klon. Pouze originální hardware.', 'font-size: 14px; font-weight: bold; color: #ff6b35;');
     
     /* ==========================================
-       MOBILE MENU TOGGLE
-       ========================================== */
-    
-    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-    const navLinks = document.getElementById('navLinks');
-    
-    if (mobileMenuToggle && navLinks) {
-        mobileMenuToggle.addEventListener('click', function() {
-            this.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            
-            // Animate menu items
-            if (navLinks.classList.contains('active')) {
-                anime({
-                    targets: navLinks.querySelectorAll('a'),
-                    translateX: [-50, 0],
-                    opacity: [0, 1],
-                    delay: anime.stagger(50),
-                    duration: 600,
-                    easing: 'easeOutCubic'
-                });
-            }
-        });
-    }
-    
-    /* ==========================================
        ACCESSIBILITY - Keyboard Navigation
        ========================================== */
     
@@ -701,6 +709,59 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.classList.remove('keyboard-nav');
     });
     
+    /* ==========================================
+       FAQ ACCORDION
+       ========================================== */
+
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        
+        if (!question || !answer) return;
+        
+        answer.style.maxHeight = '0';
+        answer.style.overflow = 'hidden';
+        answer.style.transition = 'max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        
+        question.addEventListener('click', () => {
+            const isOpen = item.classList.contains('open');
+            
+            faqItems.forEach(other => {
+                other.classList.remove('open');
+                const otherAnswer = other.querySelector('.faq-answer');
+                if (otherAnswer) otherAnswer.style.maxHeight = '0';
+            });
+            
+            if (!isOpen) {
+                item.classList.add('open');
+                answer.style.maxHeight = answer.scrollHeight + 50 + 'px';
+            }
+        });
+    });
+
+    gsap.from('.faq-item', {
+        y: 50,
+        opacity: 0,
+        duration: 0.7,
+        stagger: 0.1,
+        scrollTrigger: {
+            trigger: '.faq-grid',
+            start: 'top 80%'
+        }
+    });
+
+    gsap.from('.trust-card', {
+        y: 60,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        scrollTrigger: {
+            trigger: '.trust-grid',
+            start: 'top 80%'
+        }
+    });
+
     /* ==========================================
        CONTACT FORM HANDLER
        ========================================== */

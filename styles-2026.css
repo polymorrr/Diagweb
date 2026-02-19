@@ -889,34 +889,35 @@ iconify-icon.brand-logo.audi-rings {
 /* BENTO GRID - Asymmetric Modern Layout */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    max-width: 1300px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
 .service-card {
     position: relative;
-    padding: 3.5rem;
+    padding: 3.5rem 3rem;
     background: var(--glass-bg);
-    backdrop-filter: blur(var(--glass-blur));
+    backdrop-filter: blur(10px);
     border: 2px solid var(--glass-border);
     border-radius: 32px;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
-    grid-column: span 12;
+    cursor: pointer;
+    will-change: transform;
 }
 
-.service-card:nth-child(1) {
-    grid-column: span 5;
-}
-
-.service-card:nth-child(2) {
-    grid-column: span 7;
-}
-
-.service-card:nth-child(3) {
-    grid-column: span 12;
+.service-price {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, var(--cyber-teal), var(--electric-blue));
+    color: white;
+    font-weight: 800;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    font-family: var(--font-tech);
 }
 
 .service-card::before {
@@ -978,6 +979,16 @@ iconify-icon.brand-logo.audi-rings {
     border: 2px solid rgba(16, 185, 129, 0.3);
 }
 
+.service-icon.purple {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(147, 51, 234, 0.15));
+    border: 2px solid rgba(168, 85, 247, 0.3);
+}
+
+.service-icon.orange {
+    background: linear-gradient(135deg, rgba(251, 146, 60, 0.15), rgba(249, 115, 22, 0.15));
+    border: 2px solid rgba(251, 146, 60, 0.3);
+}
+
 .service-icon i {
     font-size: 3rem;
     z-index: 2;
@@ -987,6 +998,8 @@ iconify-icon.brand-logo.audi-rings {
 .service-icon.red i { color: var(--solar-boost); }
 .service-icon.blue i { color: var(--electric-blue); }
 .service-icon.green i { color: var(--success); }
+.service-icon.purple i { color: #a855f7; }
+.service-icon.orange i { color: #fb923c; }
 
 .service-card:hover .service-icon {
     transform: scale(1.1) rotate(5deg);
@@ -1473,6 +1486,362 @@ footer {
 }
 
 /* ============================================
+   HERO NOTE
+   ============================================ */
+
+.hero-note {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: rgba(251, 191, 36, 0.08);
+    border: 1px solid rgba(251, 191, 36, 0.25);
+    border-radius: 12px;
+    margin-bottom: 2.5rem;
+    max-width: 700px;
+}
+
+.hero-note i {
+    color: var(--warning);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.hero-note span {
+    color: var(--cloud-dancer);
+    font-size: 0.95rem;
+    opacity: 0.85;
+    line-height: 1.5;
+}
+
+/* ============================================
+   TRUST SECTION
+   ============================================ */
+
+.trust-section {
+    padding: 5rem 0;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.trust-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2.5rem 2rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    border: 2px solid var(--glass-border);
+    border-radius: 20px;
+    transition: all 0.4s ease;
+}
+
+.trust-card:hover {
+    border-color: var(--cyber-teal);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0, 212, 170, 0.15);
+}
+
+.trust-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(0, 212, 170, 0.2), rgba(0, 149, 255, 0.2));
+    border-radius: 14px;
+    border: 2px solid rgba(0, 212, 170, 0.3);
+}
+
+.trust-icon i {
+    font-size: 1.5rem;
+    color: var(--cyber-teal);
+}
+
+.trust-card h4 {
+    font-size: 1.15rem;
+    color: var(--opal-white);
+    font-weight: 700;
+}
+
+.trust-card p {
+    color: var(--cloud-dancer);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    opacity: 0.85;
+}
+
+/* ============================================
+   SERVICE CARD BADGE & FEATURED
+   ============================================ */
+
+.service-card--featured {
+    border-color: rgba(16, 185, 129, 0.4) !important;
+    background: rgba(16, 185, 129, 0.04) !important;
+}
+
+.service-card-badge {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    padding: 0.4rem 1rem;
+    background: linear-gradient(135deg, #10b981, #00d4aa);
+    color: white;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+}
+
+/* Cupra brand color */
+.brand-logo-card[data-brand="cupra"]:hover {
+    background: rgba(57, 255, 20, 0.05);
+    border-color: #39ff14;
+    box-shadow: 0 30px 80px rgba(57, 255, 20, 0.2);
+}
+
+.brand-logo-card[data-brand="cupra"]:hover .brand-logo {
+    color: #39ff14;
+    opacity: 1;
+    filter: drop-shadow(0 10px 40px #39ff14);
+}
+
+/* ============================================
+   PRICING TABLE
+   ============================================ */
+
+.pricing-table-wrap {
+    overflow-x: auto;
+    margin-bottom: 4rem;
+    border-radius: 24px;
+    border: 2px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+}
+
+.pricing-table {
+    width: 100%;
+    min-width: 700px;
+}
+
+.pricing-table-row {
+    display: grid;
+    grid-template-columns: 2.5fr 4fr 1.5fr;
+    align-items: center;
+    gap: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.3s ease;
+}
+
+.pricing-table-row:last-child {
+    border-bottom: none;
+}
+
+.pricing-table-row:not(.pricing-table-header):hover {
+    background: rgba(0, 212, 170, 0.04);
+}
+
+.pricing-table-header {
+    background: rgba(0, 212, 170, 0.08);
+    border-bottom: 2px solid rgba(0, 212, 170, 0.2) !important;
+}
+
+.pricing-table-header > div {
+    padding: 1.5rem 2rem;
+    color: var(--cyber-teal);
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-family: var(--font-tech);
+}
+
+.pricing-table-row--featured {
+    background: rgba(16, 185, 129, 0.06);
+    border-left: 3px solid #10b981;
+}
+
+.pricing-table-row--popular {
+    background: rgba(0, 212, 170, 0.06);
+    border-left: 3px solid var(--cyber-teal);
+}
+
+.pt-name {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--opal-white);
+    font-weight: 700;
+    font-size: 1.05rem;
+    flex-wrap: wrap;
+}
+
+.pt-name i {
+    color: var(--cyber-teal);
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.pt-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.pt-badge--popular {
+    background: rgba(0, 212, 170, 0.2);
+    color: var(--cyber-teal);
+    border-color: rgba(0, 212, 170, 0.4);
+}
+
+.pt-includes {
+    padding: 2rem 2rem 2rem 0;
+    color: var(--cloud-dancer);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    opacity: 0.85;
+    border-left: 1px solid rgba(255,255,255,0.05);
+    border-right: 1px solid rgba(255,255,255,0.05);
+}
+
+.pt-price {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.price-tag {
+    display: inline-block;
+    padding: 0.6rem 1.25rem;
+    background: rgba(0, 212, 170, 0.12);
+    border: 1.5px solid rgba(0, 212, 170, 0.3);
+    border-radius: 30px;
+    color: var(--cyber-teal);
+    font-weight: 800;
+    font-size: 1rem;
+    white-space: nowrap;
+    font-family: var(--font-tech);
+}
+
+.price-tag--ev {
+    background: rgba(16, 185, 129, 0.12);
+    border-color: rgba(16, 185, 129, 0.3);
+    color: #10b981;
+}
+
+.price-tag--individual {
+    background: rgba(139, 92, 246, 0.12);
+    border-color: rgba(139, 92, 246, 0.3);
+    color: #a78bfa;
+}
+
+/* ============================================
+   FAQ SECTION
+   ============================================ */
+
+.faq-section {
+    padding: 10rem 0;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    border: 2px solid var(--glass-border);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: rgba(0, 212, 170, 0.3);
+}
+
+.faq-question {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 2rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.faq-question:hover {
+    background: rgba(0, 212, 170, 0.04);
+}
+
+.faq-icon {
+    color: var(--cyber-teal);
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.faq-question h3 {
+    flex: 1;
+    font-size: 1.1rem;
+    color: var(--opal-white);
+    line-height: 1.5;
+}
+
+.faq-chevron {
+    color: var(--cloud-dancer);
+    font-size: 1rem;
+    opacity: 0.6;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.open .faq-chevron {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 0 2rem 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.faq-answer p {
+    color: var(--cloud-dancer);
+    line-height: 1.8;
+    font-size: 1rem;
+    opacity: 0.9;
+    padding-top: 1.5rem;
+}
+
+/* ============================================
+   FORM LABEL NOTE
+   ============================================ */
+
+.label-note {
+    font-weight: 400;
+    font-size: 0.85rem;
+    opacity: 0.6;
+    font-style: italic;
+}
+
+/* ============================================
    PRICING SECTION
    ============================================ */
 
@@ -1505,9 +1874,9 @@ footer {
 }
 
 .pricing-card:hover {
-    transform: translateY(-15px);
+    transform: translateY(-5px);
     border-color: var(--cyber-teal);
-    box-shadow: 0 30px 80px rgba(0, 212, 170, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 212, 170, 0.2);
 }
 
 .pricing-ribbon {
@@ -1854,10 +2223,6 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .nav-links {
-        display: none;
-    }
-    
     .mobile-menu-toggle {
         display: flex;
         flex-direction: column;
@@ -1866,6 +2231,7 @@ footer {
         border: none;
         cursor: pointer;
         padding: 0.75rem;
+        z-index: 1001;
     }
     
     .mobile-menu-toggle span {
@@ -1874,6 +2240,52 @@ footer {
         background: var(--cyber-teal);
         border-radius: 2px;
         transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(8px, -8px);
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 400px;
+        height: 100vh;
+        background: rgba(15, 23, 42, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem;
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1000;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .nav-link {
+        width: 100%;
+        text-align: center;
+        font-size: 1.5rem;
+    }
+    
+    .cta-button {
+        width: 100%;
+        justify-content: center;
     }
     
     .hero-title {
@@ -1898,5 +2310,65 @@ footer {
     
     .brands-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .form-container {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+    
+    .modern-form {
+        padding: 2rem 1.5rem;
+    }
+    
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+    
+    .container {
+        padding: 0 1.5rem;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+        line-height: 1.2;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .service-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .sfd-warning {
+        flex-direction: column;
+        padding: 2rem 1.5rem;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .brands-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .brand-logo,
+    iconify-icon.brand-logo {
+        font-size: 4rem;
+        width: 4rem;
+        height: 4rem;
     }
 }
